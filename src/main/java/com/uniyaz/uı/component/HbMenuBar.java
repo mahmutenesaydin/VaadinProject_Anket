@@ -1,11 +1,10 @@
 package com.uniyaz.uı.component;
 
 import com.uniyaz.HbUI;
-import com.uniyaz.uı.page.anket.AnketCoz;
-import com.uniyaz.uı.page.anket.AnketListPage;
-import com.uniyaz.uı.page.anket.AnketPage;
-import com.uniyaz.uı.page.kullanici.KullaniciPage;
-import com.uniyaz.uı.page.soru.SoruListPage;
+import com.uniyaz.uı.page.musteri.MusteriListePage;
+import com.uniyaz.uı.page.musteri.MusteriPage;
+import com.uniyaz.uı.page.urun.UrunListePage;
+import com.uniyaz.uı.page.urun.UrunPage;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.ui.MenuBar;
 import com.vaadin.ui.UI;
@@ -21,59 +20,46 @@ public class HbMenuBar extends MenuBar
         HbUI hbUI = (HbUI) UI.getCurrent();
         contentComponent = hbUI.getContentComponent();
 
-        buildAnketIslemleri();
-        buildSoruIslemleri();
-        buildKullaniciIslemleri();
+        buildUrunMenuItem();
+        buildMusteriMenuItem();
     }
 
-    private void buildAnketIslemleri()
+    private void buildUrunMenuItem()
     {
-        MenuItem anketIslemleriMenuItem =addItem("Anket İşlemleri", null);
-        anketIslemleriMenuItem.addItem("Anket Ekle", FontAwesome.PLUS, new Command() {
+        MenuItem urunMenuItem = addItem("Ürün", FontAwesome.PHONE,null);
+        urunMenuItem.addItem("Ürün Ekle", FontAwesome.SAVE, new Command() {
             @Override
-            public void menuSelected(MenuItem menuItem)
-            {
-                AnketPage anketPage = new AnketPage();
-                contentComponent.addComponent(anketPage);
+            public void menuSelected(MenuItem menuItem) {
+                UrunPage urunPage = new UrunPage();
+                contentComponent.addComponent(urunPage);
             }
         });
 
-        anketIslemleriMenuItem.addItem("Anket Listele", FontAwesome.LIST, new Command()
-        {
+        urunMenuItem.addItem("Ürün Listele", FontAwesome.LIST, new Command() {
             @Override
-            public void menuSelected(MenuItem menuItem)
-            {
-                AnketListPage anketListPage = new AnketListPage();
-                contentComponent.addComponent(anketListPage);
+            public void menuSelected(MenuItem menuItem) {
+                UrunListePage urunListePage = new UrunListePage();
+                contentComponent.addComponent(urunListePage);
             }
         });
     }
 
-    private void buildSoruIslemleri()
+    private void buildMusteriMenuItem()
     {
-        MenuItem soruIslemleriMenuItem =addItem("Soru İşlemleri", null);
-        soruIslemleriMenuItem.addItem("Soruları Görüntüle", FontAwesome.PLUS, new Command() {
+        MenuItem musteriMenuItem = addItem("Müşteri", FontAwesome.AMAZON, null);
+        musteriMenuItem.addItem("Müşteri Ekle", FontAwesome.SAVE, new Command() {
             @Override
-            public void menuSelected(MenuItem menuItem)
-            {
-                SoruListPage soruListPage = new SoruListPage();
-                contentComponent.addComponent(soruListPage);
+            public void menuSelected(MenuItem menuItem) {
+                MusteriPage musteriPage = new MusteriPage();
+                contentComponent.addComponent(musteriPage);
             }
         });
-    }
 
-    private void buildKullaniciIslemleri()
-    {
-        MenuItem kullaniciIslemleriMenuItem =addItem("Kullanıcı İşlemleri", null);
-        kullaniciIslemleriMenuItem.addItem("Anketi Çözmeye Başla", FontAwesome.PLUS, new Command() {
+        musteriMenuItem.addItem("Müşteri Listele", FontAwesome.LIST, new Command() {
             @Override
-            public void menuSelected(MenuItem menuItem)
-            {
-//                AnketCoz anketCoz = new AnketCoz();
-//                contentComponent.addComponent(anketCoz);
-
-                KullaniciPage kullaniciPage = new KullaniciPage();
-                contentComponent.addComponent(kullaniciPage);
+            public void menuSelected(MenuItem menuItem) {
+                MusteriListePage musteriListPage = new MusteriListePage();
+                contentComponent.addComponent(musteriListPage);
             }
         });
     }

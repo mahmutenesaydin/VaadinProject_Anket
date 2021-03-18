@@ -1,7 +1,5 @@
 package com.uniyaz;
 
-import com.uniyaz.core.domain.Anket;
-import com.uniyaz.core.domain.Soru;
 import com.uniyaz.uı.component.ContentComponent;
 import com.uniyaz.uı.component.HbMenuBar;
 import com.uniyaz.uı.component.SearchComponent;
@@ -24,8 +22,6 @@ public class HbUI extends UI {
 
     private VerticalLayout mainLayout;
     private ContentComponent contentComponent;
-    private Anket anket;
-    private Soru soru;
 
     @Override
     protected void init(VaadinRequest vaadinRequest)
@@ -59,23 +55,6 @@ public class HbUI extends UI {
     }
 
     public void setContentComponent(ContentComponent contentComponent) {
-
         this.contentComponent = contentComponent;
-    }
-
-    public Anket getAnket() {
-        return anket;
-    }
-
-    public void setAnket(Anket anket) {
-        this.anket = anket;
-    }
-
-    public Soru getSoru() {
-        return soru;
-    }
-
-    public void setSoru(Soru soru) {
-        this.soru = soru;
     }
 }

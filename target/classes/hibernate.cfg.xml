@@ -14,10 +14,7 @@
         <property name="hibernate.hbm2ddl.auto">update</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
 
-        <mapping class="com.uniyaz.core.domain.Kullanici"></mapping>
-        <mapping class="com.uniyaz.core.domain.Anket"></mapping>
-        <mapping class="com.uniyaz.core.domain.Soru"></mapping>
-        <mapping class="com.uniyaz.core.domain.Cevap"></mapping>
-        <mapping class="com.uniyaz.core.domain.Secenek"></mapping>
+        <mapping class="com.uniyaz.core.domain.Urun"></mapping>
+        <mapping class="com.uniyaz.core.domain.Musteri"></mapping>
     </session-factory>
 </hibernate-configuration>
