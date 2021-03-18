@@ -1,6 +1,5 @@
 package com.uniyaz.uı.component;
 
-import com.uniyaz.core.domain.EnumCinsiyet;
 import com.uniyaz.core.domain.EnumSoruTuru;
 import com.vaadin.data.Item;
 import com.vaadin.ui.ComboBox;

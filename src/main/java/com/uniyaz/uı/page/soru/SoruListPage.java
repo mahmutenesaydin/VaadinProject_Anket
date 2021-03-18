@@ -1,20 +1,22 @@
 package com.uniyaz.uı.page.soru;
 
 import com.uniyaz.HbUI;
+import com.uniyaz.core.domain.Anket;
 import com.uniyaz.core.domain.EnumSoruTuru;
+import com.uniyaz.core.domain.Secenek;
 import com.uniyaz.core.domain.Soru;
 import com.uniyaz.core.service.SoruService;
 import com.uniyaz.uı.component.ContentComponent;
 import com.uniyaz.uı.component.HbDeleteButton;
 import com.uniyaz.uı.component.HbEditButton;
+import com.uniyaz.uı.component.HbSaveButton;
 import com.uniyaz.uı.page.BasePage;
+import com.uniyaz.uı.page.secenek.SecenekEkle;
 import com.vaadin.data.Container;
 import com.vaadin.data.Item;
 import com.vaadin.data.util.IndexedContainer;
-import com.vaadin.ui.Alignment;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.Table;
-import com.vaadin.ui.VerticalLayout;
+import com.vaadin.shared.ui.window.WindowMode;
+import com.vaadin.ui.*;
 
 import java.util.List;
 
@@ -23,6 +25,7 @@ public class SoruListPage extends BasePage
     private VerticalLayout mainLayout;
     private Table table;
     private Container container;
+    private Secenek secenek;
 
 
     public SoruListPage() {
@@ -52,7 +55,7 @@ public class SoruListPage extends BasePage
 
         buildContainer();
         table.setContainerDataSource(container);
-        table.setColumnHeaders("ID","CEVAP", "SORU", "ANKET", "", "");
+        table.setColumnHeaders("ID","CEVAP", "SORU", "ANKET", "", "", "");
     }
 
     private void buildContainer() {
@@ -64,6 +67,7 @@ public class SoruListPage extends BasePage
         container.addContainerProperty("ID_ANKET", Long.class, null);
         container.addContainerProperty("guncelle", HbEditButton.class, null);
         container.addContainerProperty("sil", HbDeleteButton.class, null);
+        container.addContainerProperty("yeniSecenek", Button.class, null);
     }
 
     private void fillTable()
@@ -84,8 +88,47 @@ public class SoruListPage extends BasePage
 
             HbDeleteButton sil = buildDeleteButton(soru);
             item.getItemProperty("sil").setValue(sil);
+
+            HbSaveButton yeniSecenek = buildyeniSecenekButton(soru);
+            item.getItemProperty("yeniSecenek").setValue(yeniSecenek);
       }
   }
+
+    private HbSaveButton buildyeniSecenekButton(final Soru soru)
+    {
+        HbSaveButton yeniSoru = new HbSaveButton();
+        yeniSoru.setCaption("Seçenek Ekle");
+        yeniSoru.addClickListener(new Button.ClickListener() {
+            @Override
+            public void buttonClick(Button.ClickEvent clickEvent) {
+
+//               HbUI syUI = (HbUI) HbUI.getCurrent();
+//               ContentComponent contentComponent = syUI.getContentComponent();
+//
+//                SoruPage soruPage = new SoruPage(anket);
+//                contentComponent.addComponent(soruPage);
+
+                secenek = new Secenek();
+                SecenekEkle secenekEkle = new SecenekEkle(soru);
+                Window window = new Window();
+                window.setCaption("Yeni Secenek Ekle");
+                window.setClosable(true);
+                window.setWindowMode(WindowMode.NORMAL);
+                window.setWidth(50, Unit.PERCENTAGE);
+                window.setHeight(50, Unit.PERCENTAGE);
+                window.setResizable(true);
+                window.center();
+                window.setContent(secenekEkle);
+
+                HbUI hbUI = (HbUI) HbUI.getCurrent();
+                hbUI.addWindow(window);
+
+//                SoruPage soruPage = new SoruPage(anket);
+//                contentComponent.addComponent(soruPage);
+            }
+        });
+        return yeniSoru;
+    }
 
     private HbEditButton buildUpdateButton(final Soru soru)
     {

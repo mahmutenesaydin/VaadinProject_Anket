@@ -1,5 +1,6 @@
 package com.uniyaz.uı.page.secenek;
 
+import com.uniyaz.core.domain.Anket;
 import com.uniyaz.core.domain.Secenek;
 import com.uniyaz.core.domain.Soru;
 import com.uniyaz.core.service.SecenekService;
@@ -42,6 +43,24 @@ public class SecenekEkle extends BasePage {
         secenekBeanItem = new BeanItem<Secenek>(secenek);
         binder = new FieldGroup(secenekBeanItem);
         binder.bindMemberFields(this);
+    }
+
+
+    public SecenekEkle(Soru soru)
+    {
+        this.soru = soru;
+        Secenek secenek = new Secenek();
+        secenek.setSoru(soru);
+
+        setSizeFull();
+        addComponent(mainLayout);
+        setComponentAlignment(mainLayout, Alignment.MIDDLE_CENTER);
+
+        secenekBeanItem = new BeanItem<Secenek>(secenek);
+        binder = new FieldGroup(secenekBeanItem);
+        binder.bindMemberFields(this);
+
+        buildMainLayout();
     }
 
     @Override
