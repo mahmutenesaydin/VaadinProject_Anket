@@ -2,6 +2,7 @@ package com.uniyaz.uı.page.cevap;
 
 import com.uniyaz.core.domain.Anket;
 import com.uniyaz.core.domain.Cevap;
+import com.uniyaz.core.domain.Kullanici;
 import com.uniyaz.core.domain.Soru;
 import com.uniyaz.core.service.CevapService;
 import com.uniyaz.core.service.SoruService;
@@ -13,7 +14,8 @@ import com.vaadin.data.util.BeanItem;
 import com.vaadin.ui.*;
 
 
-public class CevapPage extends BasePage {
+public class CevapPage extends BasePage
+{
     @PropertyId("ID")
     private TextField id;
 
@@ -25,13 +27,25 @@ public class CevapPage extends BasePage {
     private BeanItem<Cevap> cevapBeanItem;
     private FieldGroup binder;
     private HbSaveButton vpSaveButton;
+    private Kullanici kullanici;
+    private Soru soru;
 
     public CevapPage(Soru soru)
     {
-        this(new Cevap());
+        this.soru = soru;
+        Cevap cevap = new Cevap();
+        cevap.setSoru(soru);
+
+        buildView(cevap);
     }
 
-    public CevapPage(Cevap cevap) {
+//    public CevapPage(Cevap cevap)
+//    {
+//        buildView(cevap);
+//    }
+
+    public void buildView(Cevap cevap)
+    {
         setSizeFull();
         buildMainLayout();
         addComponent(mainLayout);
@@ -40,6 +54,14 @@ public class CevapPage extends BasePage {
         cevapBeanItem = new BeanItem<Cevap>(cevap);
         binder = new FieldGroup(cevapBeanItem);
         binder.bindMemberFields(this);
+    }
+
+    public CevapPage(Kullanici kullanici)
+    {
+        this.kullanici = kullanici;
+
+        Anket anket = new Anket();
+        anket.setKullanici(kullanici);
     }
 
     @Override

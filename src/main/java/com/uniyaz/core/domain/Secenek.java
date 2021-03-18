@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "SECENEK")
+@Table(name = "Secenek")
 public class Secenek extends BaseEntity
 {
     @Id
@@ -12,10 +12,13 @@ public class Secenek extends BaseEntity
     @Column(name = "ID")
     private Long id;
 
-    @Column(name = "SECENEK", nullable = false, length = 100)
+    @Column(name = "SECENEK_ADI", nullable = false, length = 100)
     @NotNull
     private String secenek;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_SORU", foreignKey = @ForeignKey(name = "FK_SECENEK_SORU"))
+    private Soru Soru;
 
     @Override
     public Long getId() {
@@ -32,5 +35,13 @@ public class Secenek extends BaseEntity
 
     public void setSecenek(String secenek) {
         this.secenek = secenek;
+    }
+
+    public com.uniyaz.core.domain.Soru getSoru() {
+        return Soru;
+    }
+
+    public void setSoru(com.uniyaz.core.domain.Soru soru) {
+        Soru = soru;
     }
 }

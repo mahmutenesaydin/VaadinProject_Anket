@@ -1,32 +1,53 @@
 package com.uniyaz.uı.component;
 
-import com.uniyaz.core.dao.AnketDao;
-import com.uniyaz.core.dao.SecenekDao;
-import com.uniyaz.core.domain.Anket;
-import com.uniyaz.core.domain.Secenek;
+import com.uniyaz.core.domain.EnumCinsiyet;
+import com.uniyaz.core.domain.EnumSoruTuru;
+import com.vaadin.data.Item;
 import com.vaadin.ui.ComboBox;
+import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.TextField;
 
 import java.util.List;
 
 public class SecenekComboBox extends ComboBox
 {
-    private SecenekDao secenekDao;
+    private EnumSoruTuru enumSoruTuru;
+    private FormLayout mainLayout;
 
     public SecenekComboBox()
     {
-        this.secenekDao = new SecenekDao();
-        this.setDescription("Kategori Seçiniz");
-        fillComboBox();
+        mainLayout = new FormLayout();
+
+        fillCombobox();
     }
 
-    private void fillComboBox()
+    private void fillCombobox()
     {
-        this.removeAllItems();
-        List<Secenek> secenekList = secenekDao.findAllHql();
-        for (Secenek secenek : secenekList)
+        for (EnumSoruTuru soruTuru : EnumSoruTuru.values())
         {
-            this.addItem(secenek);
-            setItemCaption(secenek,secenek.getSecenek());
+            Item item = addItem(soruTuru);
+//
+//            switch (soruTuru)
+//            {
+//                case YaziMetni:
+//                    TextField yaziMetni = new TextField();
+//                    mainLayout.addComponent(yaziMetni);
+//                    break;
+//                case CoktanSecmeli:
+//                    ComboBox coktanSecmeli = new ComboBox();
+//                    mainLayout.addComponent(coktanSecmeli);
+//            }
         }
+//
+//        switch (enumSoruTuru)
+//        {
+//            case YaziMetni:
+//                TextField yaziMetni = new TextField();
+//                mainLayout.addComponent(yaziMetni);
+//                break;
+//            case CoktanSecmeli:
+//                ComboBox coktanSecmeli = new ComboBox();
+//                mainLayout.addComponent(coktanSecmeli);
+//        }
     }
 }

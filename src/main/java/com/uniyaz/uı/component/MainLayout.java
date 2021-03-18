@@ -16,7 +16,7 @@ public class MainLayout extends VerticalLayout
 //
 //    private void buildLayout()
 //    {
-//        SearchComponent searchComponent = new SearchComponent();
+//        HeaderLayout searchComponent = new HeaderLayout();
 //        addComponent(searchComponent);
 //
 //        HbMenuBar hbMenuBar = new HbMenuBar();

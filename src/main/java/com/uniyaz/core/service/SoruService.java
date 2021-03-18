@@ -22,7 +22,7 @@ public class SoruService
         return soruDao.findAllHql();
     }
 
-    public List<Soru> findAllByMusteriId(Long anketId) {
-        return soruDao.findAllByanketId(anketId);
-    }
+//    public List<Soru> findAllByAnketId(Long anketId) {
+//        return soruDao.findAllByanketId(anketId);
+//    }
 }

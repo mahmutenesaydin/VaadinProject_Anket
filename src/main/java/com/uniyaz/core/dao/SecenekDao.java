@@ -1,6 +1,7 @@
 package com.uniyaz.core.dao;
 
 import com.uniyaz.core.domain.Secenek;
+import com.uniyaz.core.domain.Soru;
 import com.uniyaz.core.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -37,6 +38,7 @@ public class SecenekDao
         }
     }
 
+
     public List<Secenek> findAllHql()
     {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
@@ -51,4 +53,22 @@ public class SecenekDao
         }
         return null;
     }
+
+//    public List<Soru> findAllByKullanıcıId(Long kullaniciId)
+//    {
+//        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+//        try (Session session = sessionFactory.openSession()) {
+//            String hql =
+//                    "Select     Secenek " +
+//                    "From       Secenek Secenek " +
+//                    "Left Join Fetch Secenek.kullanici kullanici " +
+//                    "where      Secenek.id = : kullaniciId";
+//            Query query = session.createQuery(hql);
+//            query.setParameter("kullaniciId", kullaniciId);
+//            return query.list();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
 }

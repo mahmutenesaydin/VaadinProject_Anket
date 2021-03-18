@@ -1,8 +1,11 @@
 package com.uniyaz;
 
+import com.uniyaz.core.domain.Anket;
+import com.uniyaz.core.domain.Kullanici;
+import com.uniyaz.core.domain.Soru;
 import com.uniyaz.uı.component.ContentComponent;
 import com.uniyaz.uı.component.HbMenuBar;
-import com.uniyaz.uı.component.SearchComponent;
+import com.uniyaz.uı.component.HeaderLayout;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.Widgetset;
 import com.vaadin.server.VaadinRequest;
@@ -22,6 +25,9 @@ public class HbUI extends UI {
 
     private VerticalLayout mainLayout;
     private ContentComponent contentComponent;
+    private Anket anket;
+    private Soru soru;
+    private Kullanici kullanici;
 
     @Override
     protected void init(VaadinRequest vaadinRequest)
@@ -37,15 +43,15 @@ public class HbUI extends UI {
 
         contentComponent = new ContentComponent();
 
-        SearchComponent searchComponent = new SearchComponent();
-        mainLayout.addComponent(searchComponent);
+        HeaderLayout headerLayout = new HeaderLayout();
+        mainLayout.addComponent(headerLayout);
 
        HbMenuBar hbMenuBar = new HbMenuBar();
 
         mainLayout.addComponent(hbMenuBar);
         mainLayout.addComponent(contentComponent);
 
-        mainLayout.setExpandRatio(searchComponent, 0.8f);
+        mainLayout.setExpandRatio(headerLayout, 0.8f);
         mainLayout.setExpandRatio(hbMenuBar, 0.6f);
         mainLayout.setExpandRatio(contentComponent, 8.6f);
     }
@@ -55,6 +61,31 @@ public class HbUI extends UI {
     }
 
     public void setContentComponent(ContentComponent contentComponent) {
+
         this.contentComponent = contentComponent;
+    }
+
+    public Anket getAnket() {
+        return anket;
+    }
+
+    public void setAnket(Anket anket) {
+        this.anket = anket;
+    }
+
+    public Soru getSoru() {
+        return soru;
+    }
+
+    public void setSoru(Soru soru) {
+        this.soru = soru;
+    }
+
+    public Kullanici getKullanici() {
+        return kullanici;
+    }
+
+    public void setKullanici(Kullanici kullanici) {
+        this.kullanici = kullanici;
     }
 }

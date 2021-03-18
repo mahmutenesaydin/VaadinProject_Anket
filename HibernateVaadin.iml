@@ -6,7 +6,6 @@
         <webroots>
           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
         </webroots>
-        <sourceRoots />
       </configuration>
     </facet>
     <facet type="jpa" name="JPA">
@@ -21,7 +20,9 @@
     </facet>
     <facet type="hibernate" name="Hibernate">
       <configuration>
-        <datasource-map />
+        <datasource-map>
+          <unit-entry name="hibernate.cfg.xml" />
+        </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/hibernate.cfg.xml" />
       </configuration>

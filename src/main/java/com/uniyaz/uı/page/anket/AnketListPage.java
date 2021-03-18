@@ -96,7 +96,7 @@ public class AnketListPage extends BasePage
             public void buttonClick(Button.ClickEvent clickEvent) {
 
 //               HbUI syUI = (HbUI) HbUI.getCurrent();
-//                 ContentComponent contentComponent = syUI.getContentComponent();
+//               ContentComponent contentComponent = syUI.getContentComponent();
 //
 //                SoruPage soruPage = new SoruPage(anket);
 //                contentComponent.addComponent(soruPage);

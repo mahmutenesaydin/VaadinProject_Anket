@@ -36,4 +36,12 @@ public class Cevap extends BaseEntity
     public void setCevap(String cevap) {
         this.cevap = cevap;
     }
+
+    public Soru getSoru() {
+        return soru;
+    }
+
+    public void setSoru(Soru soru) {
+        this.soru = soru;
+    }
 }

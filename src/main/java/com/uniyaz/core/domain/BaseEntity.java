@@ -2,7 +2,8 @@ package com.uniyaz.core.domain;
 
 import java.io.Serializable;
 
-public abstract class BaseEntity implements Serializable {
+public abstract class BaseEntity implements Serializable
+{
     public abstract Long getId();
 
     @Override
@@ -19,5 +20,4 @@ public abstract class BaseEntity implements Serializable {
     public int hashCode() {
         return getId().hashCode();
     }
-
 }

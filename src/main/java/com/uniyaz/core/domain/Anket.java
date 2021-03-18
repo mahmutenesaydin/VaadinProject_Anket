@@ -16,6 +16,19 @@ public class Anket extends BaseEntity
     @NotNull
     private String ad;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_KULLANICI", foreignKey = @ForeignKey(name = "FK_ANKET_KULLANICI"))
+    private Kullanici kullanici;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_SORU", foreignKey = @ForeignKey(name = "FK_ANKET_SORU"))
+    private Soru soru;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ID_SECENEK", foreignKey = @ForeignKey(name = "FK_ANKET_SECENEK"))
+    private Secenek secenek;
+
+
 
     @Override
     public Long getId() {
@@ -34,4 +47,11 @@ public class Anket extends BaseEntity
         this.ad = ad;
     }
 
+    public Kullanici getKullanici() {
+        return kullanici;
+    }
+
+    public void setKullanici(Kullanici kullanici) {
+        this.kullanici = kullanici;
+    }
 }

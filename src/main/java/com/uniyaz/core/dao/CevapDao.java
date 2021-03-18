@@ -44,7 +44,8 @@ public class CevapDao
         try (Session session = sessionFactory.openSession()) {
             String hql =
                     "Select     cevapAlias " +
-                    "From       Cevap cevapAlias ";
+                    "From       Cevap cevapAlias " +
+                    "Left Join Fetch cevapAlias.soru soru ";
             Query query = session.createQuery(hql);
             return query.list();
         } catch (Exception e) {

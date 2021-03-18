@@ -1,6 +1,7 @@
 package com.uniyaz.core.dao;
 
 import com.uniyaz.core.domain.Anket;
+import com.uniyaz.core.domain.Soru;
 import com.uniyaz.core.utils.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -44,8 +45,27 @@ public class AnketDao
         try (Session session = sessionFactory.openSession()) {
             String hql =
                     "Select     anketAlias " +
-                    "From       Anket anketAlias ";
+                    "From       Anket anketAlias "+
+                    "left join fetch anketAlias.kullanici kullanici";
             Query query = session.createQuery(hql);
+            return query.list();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<Soru> findAllByKullanıcıId(Long kullaniciId)
+    {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        try (Session session = sessionFactory.openSession()) {
+            String hql =
+                    "Select     anket " +
+                    "From       Anket anket " +
+                    "Left Join Fetch anket.kullanici kullanici " +
+                    "where      anket.id = : kullaniciId";
+            Query query = session.createQuery(hql);
+            query.setParameter("kullaniciId", kullaniciId);
             return query.list();
         } catch (Exception e) {
             e.printStackTrace();
